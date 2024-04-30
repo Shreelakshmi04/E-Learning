@@ -1,7 +1,7 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
-// const JWT_SECRET = 'hello'
+
 dotenv.config()
 
 const FetchUser = async (req,res,next)=>{
@@ -11,7 +11,7 @@ const FetchUser = async (req,res,next)=>{
         }
     try{
         const data = await jwt.verify(token, process.env.JWT_SECRET)
-        // const data = await jwt.verify(token, JWT_SECRET)
+        
         req.user = data.user
         next()
     }
